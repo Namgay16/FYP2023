@@ -1,0 +1,678 @@
+<%- include('../required/header.ejs') %>
+
+<style>
+
+#block11 .shadow-box {
+  box-shadow: 0 0 20px rgba(77, 77, 77, 0.25); /* adds a box shadow */
+  height: 78px;
+  background-color: #ffffff; /* sets the background color */
+  border-radius: 10px; /* rounds the corners */
+  margin: 18px 0 0 2.2rem;
+  width: 101%;
+}
+#block11 .shadow-box1 {
+  box-shadow: 0 0 20px rgba(77, 77, 77, 0.25); /* adds a box shadow */
+  height: auto;
+  background-color: #ffffff; /* sets the background color */
+  border-radius: 10px; /* rounds the corners */
+  margin: 18px 0 0 2.2rem;
+  width: 101%;
+}
+
+#block11 .mar {
+  margin-top: 14px;
+}
+#block11 {
+  width: 97.5%;
+  padding-top: 88px;
+}
+#block11 .status {
+  font-size: 14px;
+  padding-top: 2rem;
+  margin-left: 6%;
+  color: #4f4f4f;
+}
+
+#block11 .icon {
+  color: #ff4b13;
+  font-size: 24px;
+  position: absolute;
+  margin-left: 6%;
+  opacity: 90%;
+}
+#block11 .bname {
+  margin-left: 16%;
+  font-weight: 500;
+  width: 200px;
+  letter-spacing: 0.1em;
+  color: #4f4f4f;
+}
+#block11 .block-details {
+  margin-top: -0.2rem;
+}
+#block11 .edit-icon {
+  color: #ff4b13;
+  font-size: 24px;
+  margin-top: -2rem;
+  margin-left: 70%;
+  position: absolute;
+  opacity: 90%;
+}
+#block11 .trash-icon {
+  color: #ff4b13;
+  font-size: 24px;
+  margin-top: -2rem;
+  margin-left: 80%;
+  position: absolute;
+  opacity: 90%;
+}
+#block11 .room-number {
+  color: #ff4b13;
+  font-weight: bold;
+  margin-left: 2rem;
+  opacity: 90%;
+}
+.room-total {
+  margin-top: -3rem;
+  color: #4f4f4f;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+#block11 .room-details {
+  margin-left: 16%;
+}
+#block11 .student-details {
+  position: absolute;
+  margin-top: -5rem;
+  margin-left: 55%;
+  padding-right: 5px;
+}
+#block11 .tot {
+  text-align: left;
+  color: #4f4f4f;
+  font-size: 14px;
+  margin-left: 15px;
+}
+#block11 .button {
+  width: 40%;
+  height: 40px;
+  margin-left: 30%;
+  background-color: #ff4b13;
+  color: #ffffff;
+  font-weight: 100;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 90%;
+}
+#block11 .button2 {
+  width: 200px;
+  height: 45px;
+  right: 0px;
+  position: absolute;
+  margin-top: -3.6rem;
+  background-color: #ff4b13;
+  color: #ffffff;
+  font-weight: 100;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 90%;
+}
+#block11 .view {
+  padding-top: 0.1rem;
+}
+#block11 .button:focus {
+  outline: none;
+}
+
+#block11 .add {
+  width: 103%;
+}
+#block11 .view {
+  margin-top: 9px;
+}
+
+#block11 .form-select {
+  border-color: #ff4b13;
+  color: #4f4f4f;
+  padding: 6px 12px;
+  border-radius: 5px;
+  opacity: 90%;
+  width:100px;
+  margin-top:-2.3rem;
+  margin-left:7rem;
+}
+
+#block11 .form-select option:hover {
+  background-color: #ff4b13;
+  color: #4f4f4f;
+  opacity: 90%;
+}
+
+#block11 .pre {
+  margin-left: 3%;
+  color: #ff4b13;
+  opacity: 90%;
+}
+#block11 .form-group {
+  margin-left: 3%;
+  margin-top:2rem;
+}
+#block11 .table {
+  margin-top: 1rem;
+  width: 95%;
+  margin-left: 2%;
+  color: #4f4f4f;
+  border-spacing:0;
+  
+}
+
+#block11 .table td,
+#block11 .table th {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #e3e6f0;
+  overflow-y:auto;
+  overflow-x:auto;
+}
+
+#block11 .table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #e3e6f0;
+}
+#block11 .pdf {
+  width: 147px;
+  height: 40px;
+  color: #ff4b13;
+  border-radius: 5px;
+  position: absolute;
+  background: #ff4a131e;
+  right: 0.4rem;
+  margin-top: -2.3rem;
+}
+#block11 .pdf {
+  border: 1px solid #ff4b13;
+  opacity: 90%;
+}
+#block11 .pdff {
+  color: #ff4b13;
+  font-size: 24px;
+  margin-top: -3.1rem;
+  right: 1rem;
+  position: absolute;
+}
+@media (max-width: 575.7px) {
+  #block11 .add {
+    margin-top: 15px;
+    width: 80%;
+  }
+  @media (max-width: 733px)
+  {
+    #block11 .shadow-box1 {
+    width: 103%;
+  }
+  #block11 .shadow-box {
+    width: 103%;
+    height: 65px;
+  }
+
+  .form-select {
+    padding: 4px 4px 4px px;
+    border-radius: 3px;
+    font-size: 12px;
+    
+  }
+
+  .pre {
+    margin-left: 5%;
+  }
+  .form-group {
+    margin-left: 5%;
+    font-size: 14px;
+    margin-top: -20px;
+    
+  }
+  .table {
+    margin-top: 1rem;
+    width: 95%;
+    margin-left: 2%;
+    opacity: 90%;
+    font-size: 14px;
+  }
+  #block11 .form-select {
+  border-color: #ff4b13;
+  color: #4f4f4f;
+  padding: 6px 12px;
+  border-radius: 5px;
+  opacity: 90%;
+  width:80px;
+  margin-top:-2.1rem;
+margin-left:4.9rem;
+}
+
+  .table td,
+  .table th {
+    font-size: 14px;
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #e3e6f0;
+  }
+
+  .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #e3e6f0;
+  }
+  #block11 .button2 {
+    width: 140px;
+    height: 35px;
+    right: -20px;
+    margin-top: -3.1rem;
+
+    font-size: 12px;
+  }
+  #block11 .view {
+    margin-top: 0.4rem;
+  }
+
+  }
+}
+
+
+ </style>
+
+<main>
+  <main id="block11">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 block1 mar">
+        <div class="shadow-box">
+          <div class="form-group pt-2">
+            <label for="exampleSelect" class="mt-3">Select year:</label>
+            <select class="form-select" id="yearSelect">
+              <% for(var i = 0; i < Acad.length; i++) { %>
+                <option value="<%= Acad[i].Year %>"><%= Acad[i].Year %></option>
+              <% } %>
+            </select>
+            
+          </div>
+          <button class="button2 text-center" id="createAcademicYearBtn"><p class="view view1">Create academic year</p></button>
+        </div>
+      </div>
+      <div class="col-lg-12 col-md-12 col-sm-12 block1">
+        <div class="shadow-box1">
+          <br><br>
+          <h6 class="pre">Previous allocation</h6>
+          <a class="" href="" style="cursor:pointer;">
+            <div class="pdf text-left">
+              <p class="download mt-2 ml-3">Download</p>
+              <i class="bi bi-file-earmark-pdf pdff"></i>
+            </div>
+          </a>
+          <br>
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="table-responsive">
+             <%- include('./table.ejs') %>
+                
+              <hr>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</main>
+
+<br>
+</body>
+
+</main>
+
+</section>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+  document.getElementById('createAcademicYearBtn').addEventListener('click', function() {
+    Swal.fire({
+  html:`
+  <h5>Academic Year</h5>
+								<form>
+										<div class="form-group">
+												<div class="input-box">
+														<label class="input-label">Acadamic year</label>
+														<input type="integer" class="input-1" onfocus="setFocus(true)" id="acadyear" onblur="setFocus(false)" />
+												</div>
+
+                        <div class="input-box">
+														<label class="input-label">Description</label>
+														<input type="textarea" class="input-1" onfocus="setFocus(true)" id="description" onblur="setFocus(false)" />
+												</div>
+										</div>
+								</form>			
+  `,
+  showCancelButton: true,
+  confirmButtonText: 'Create',
+  cancelButtonText: 'Cancel',
+  preConfirm: () => {
+									    // Retrieve the values of the input fields
+									    const year = document.getElementById('acadyear').value;
+									    const description = document.getElementById('description').value;
+									    return { year, description };
+									  }
+}).then((result) => {
+  if (result.isConfirmed) {
+    const { year, description } = result.value;
+    $.ajax({
+								url: "http://localhost:5000/year/api/years",
+								method: "POST",
+								data: { year, description },
+								success: function(response) {
+										// If the block was successfully updated, display a success message using Toastify and reload the page
+										Toastify({
+												text: "Successfully Created Academic Year",
+												backgroundColor: "linear-gradient(to right, #96c93d, #00b09b)",
+												className: "success",
+												position:"top-center",
+										}).showToast();
+										const url = `/year/create-allocations?year=${encodeURIComponent(year)}`;
+                    window.location.href = url;
+								},
+								error: function(error) {
+										// If there was an error updating the block, display an error message using Toastify
+										Toastify({
+												text: "Error Creating Academic year " + error.responseText,
+												backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+												className: "error",
+												position:"top-center",
+										}).showToast();
+								}
+						});
+  }
+});
+
+  });
+</script>
+
+<script>
+  function setFocus(on) {
+            var element = document.activeElement;
+            if (on) {
+                setTimeout(function () {
+                element.parentNode.classList.add("focus");
+                });
+            } else {
+                let box = document.querySelector(".input-box");
+                box.classList.remove("focus");
+                $("input").each(function () {
+                var $input = $(this);
+                var $parent = $input.closest(".input-box");
+                if ($input.val()) $parent.addClass("focus");
+                else $parent.removeClass("focus");
+                });
+            }
+            }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="script.js"></script>
+
+
+<script>
+  const yearSelect = document.getElementById("yearSelect");
+  const allocationTable = document.getElementById("allocationTable");
+
+  yearSelect.addEventListener("change", () => {
+    const year = yearSelect.value;
+    fetch(`/Allocate/api/years/${year}`)
+      .then((response) => response.json())
+      .then((data) => {
+        let tableHTML = "";
+        data.forEach((allocation, index) => {
+          tableHTML += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${allocation.room_name}</td>
+              <td>${allocation.block_name}</td>
+              <td>${allocation.year}</td>
+              <td>${allocation.student_name}</td>
+              <td>${allocation.course}</td>
+              <td>${allocation.academicyear}</td>
+            </tr>
+          `;
+        });
+        allocationTable.innerHTML = `
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Room</th>
+              <th>Block</th>
+              <th>Year</th>
+              <th>Name</th>
+              <th>Course</th>
+              <th>Academic Year</th>
+            </tr>
+          </thead>
+          <tbody>${tableHTML}</tbody>
+        `;
+      })
+      .catch((error) => console.error(error));
+  });
+</script>
+
+
+
+<script>
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("myBtn");
+
+btn.onclick = function () {
+modal.style.display = "block";
+}
+
+span.onclick = function () {
+modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+if (event.target == modal) {
+    modal.style.display = "none";
+}
+}
+</script>
+
+</body>
+
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       /* Style the popup form */
+.popup-form {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+/* Style the form container */
+.form-container {
+    background-color: #f6f6f6;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* Style the close button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style the buttons */
+button, input[type="submit"] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* Change the color of the submit button on hover */
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Style the new form */
+#form-page {
+    margin: 20px auto;
+    width: 80%;
+}
+
+#form-page h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#form-page label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#form-page select {
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+}
+
+#form-page input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+#form-page input[type="submit"] {
+    margin-top: 20px;
+}
+
+#form-page .form-group {
+    margin-bottom: 20px;
+}
+
+#form-page .form-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#form-page .form-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+
+    </style>
+</head>
+<body>
+    <body>
+        <h1>Allocations</h1>
+        <% for(var i = 0; i < Acad.length; i++) { %>
+            <a href="/allocate/all?year=<%= Acad[i].Year %>"><%= Acad[i].Year %></a>
+        <% } %>
+        <button id="create-year-button">Create new Acad year</button>
+    
+        <div id="popup-form" class="popup-form">
+            <div class="form-container">
+                <span class="close" onclick="closeForm()">&times;</span>
+                <h2>Create new academic year</h2>
+                <form onsubmit="submitForm(event)">
+                    <label for="year">Year :</label>
+                    <input type="text" id="year" name="year"><br><br>
+                    <label for="description">Description :</label>
+                    <input type="text" id="description" name="description"><br><br>
+                    <input type="submit" value="Submit" >
+                </form>
+            </div>
+        </div>
+    
+                
+        <script>
+            // Get the button and the popup form
+            const createYearButton = document.getElementById("create-year-button");
+            const popupForm = document.getElementById("popup-form");
+        
+            // Add an event listener to the button that will display the popup form when clicked
+            createYearButton.addEventListener("click", () => {
+                popupForm.style.display = "block";
+            });
+        
+            // Add a function to close the popup form when the close button is clicked
+            function closeForm() {
+                popupForm.style.display = "none";
+            }
+        
+            // Add a function to submit the form
+            function submitForm(event) {
+  event.preventDefault(); 
+
+
+  const year = document.getElementById("year").value;
+  const description = document.getElementById("description").value;
+
+
+  fetch("http://localhost:5000/year/api/years", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ year: year, description: description })
+  })
+  .then(response => {
+    if (response.ok) {
+      const url = `/year/create-allocations?year=${encodeURIComponent(year)}`;
+      window.location.href = url;
+    } else {
+      alert("Error: " + response.statusText);
+    }
+  })
+  .catch(error => {
+    alert("Error: " + error.message);
+  });
+}
+
+           </script>
+        
+    
+</body>
+</html> -->

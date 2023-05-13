@@ -1,0 +1,337 @@
+<%- include('../required/header') %>
+
+	<main>
+			<main id="block">
+				<div class="row">
+					<div class="col-lg-8 col-md-8 col-sm-8 block1">
+						<div class="shadow-box add-block greetings">
+							<p class="block-title ">Block </p>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-4 col-sm-4 block1">
+						<a class="add" href="#" class="addblik">
+						<div class="shadow-box add-block add " style="width:103%;">
+							<p class="add-block-text text-center">Add block</p>
+
+						</div>
+							</a>
+					</div>
+
+
+
+					<% for(var i = 0; i < blocks.length; i++) { %>
+						<% let sum = 0 %>
+						<% for(var j = 0; j < rooms.length; j++) { %>
+							<% if(rooms[j].blockid === blocks[i]._id) { %>
+								<% sum = sum + rooms[j].members.length %>
+							<% } %>
+						 <% } %>
+
+
+					<div class="col-lg-4 col-md-6 col-sm-12 block1">
+						<div class="shadow-box">
+							<p class="status">Block status: <span clas="act" style="color:#ff4b13"><%= blocks[i].status %></span></p>
+
+							<div class="block-details">
+								<i class="material-icons icon"><%= blocks[i].type %></i>
+								<h5 class="bname"><%= blocks[i].block_name %></h5>
+								<a class="edit" data-id=<%= blocks[i]._id%> >
+                  <span class="text-gradient"><i class="bx bx-edit edit-icon" id="edit-btn"></i></span>
+                </a>
+                <a class="delete" data-id=<%= blocks[i]._id%> >
+                  <span class="text-gradient"><i class="bx bx-trash trash-icon"></i></span>
+                </a>
+							</div>
+
+							<div class="room-details pt-4">
+								<h5 class="room-number "><%= blocks[i].rooms.length %></h5>
+								<span class="room-total">Rooms</span>
+							</div>
+
+							<div class="student-details pt-4">
+									<h5 class="room-number"><%= sum %></h5>
+								<span class="tot mt-5">Students</span>
+							</div>
+
+							<button class="button mt-4 text-center" onclick="location.href='/view-block?id=<%= blocks[i]._id %>'">
+								<p class="view">View rooms</p>
+							</button>
+							<!-- <a href="/view-block?id=<%= blocks[i]._id%>" class="btn border-shadow update">
+								<span class="text-gradient"><i class="fas fa-pencil-alt"></i>njrhbjhbfjahb</span>
+							</a> -->
+						</div>
+					</div>
+
+
+					<% } %>
+
+
+				</div>
+
+			</main>
+			<!-- MAIN -->
+	</section>
+<!-- ************************************************************* add ***************************************** -->
+<script>
+$(".add").click(function() {
+    // Show confirmation message using SweetAlert2
+    Swal.fire({
+        html: `
+				<h5>Create Block</h5>
+								<form>
+										<div class="form-group">
+												<div class="input-box">
+														<label class="input-label">Block Name</label>
+														<input type="text" class="input-1" onfocus="setFocus(true)" id="block-name" onblur="setFocus(false)" />
+												</div>
+
+												<div class="input-box active-grey">
+														<label class="input-label">Block Type</label>
+														<select class="input-1" onfocus="setFocus(true)" onblur="setFocus(false)" id="block-type" >
+																<option value="boys">Boys Hostel</option>
+																<option value="girls">Girls Hostel</option>
+														</select>
+												</div>
+
+												<div class="input-box active-grey">
+														<label class="input-label">Status</label>
+														<select class="input-1" onfocus="setFocus(true)" onblur="setFocus(false)" id="status" >
+																<option value="available">Available</option>
+																<option value="unavailable">Unavailable</option>
+														</select>
+												</div>
+
+
+										</div>
+								</form>
+				`,
+				showCancelButton: true,
+				showConfirmButton: true,
+				confirmButtonColor: "#ff4b13",
+				cancelButtonColor: "#000",
+				confirmButtonText: "Create",
+				preConfirm: () => {
+					// Retrieve the values of the input fields
+					const blockName = document.getElementById('block-name').value;
+					const blockType = document.getElementById('block-type').value;
+					const status = document.getElementById('status').value;
+					// Return the values as an object
+					return { blockName, blockType, status };
+				}
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Send AJAX request to delete block
+						const {blockName, blockType, status} = result.value;
+						console.log(blockName)
+						//
+						//
+						$.ajax({
+								url: "/api/blocks",
+								method: "POST",
+								data: { block_name: blockName, type:blockType, status: status },
+								success: function(response) {
+										// If the block was successfully updated, display a success message using Toastify and reload the page
+										Toastify({
+												text: "Block created successfully!",
+												backgroundColor: "linear-gradient(to right, #96c93d, #00b09b)",
+												className: "success",
+												position:"top-center",
+										}).showToast();
+										window.location.reload();
+								},
+								error: function(error) {
+										// If there was an error updating the block, display an error message using Toastify
+										Toastify({
+												text: "Error updating block: " + error.responseText,
+												backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+												className: "error",
+												position:"top-center",
+										}).showToast();
+								}
+						});
+
+        }
+    });
+});
+
+</script>
+
+
+<!-- ************************************************************* delete***************************************** -->
+			<script>
+				// Attach event listener to delete icon
+$(".delete").click(function() {
+    var id = $(this).attr("data-id");
+
+
+    // Show confirmation message using SweetAlert2
+    Swal.fire({
+        // title: "Are you sure?",
+        html: "<h6 style='font-weight: 400;'>Are you sure you want to delete the Block ?<h6>",
+        showCancelButton: true,
+        confirmButtonColor: "#ff4b13",
+        cancelButtonColor: "#000",
+        confirmButtonText: "Delete",
+        cancelButtonText: "Cancel"
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            // Send AJAX request to delete block
+            $.ajax({
+                url: "/api/blocks/" + id,
+                method: "DELETE",
+                success: function(response) {
+                    // If the block was successfully deleted, display a success message using Toastify and reload the page
+                    Toastify({
+                        text: "Block deleted successfully!",
+                        backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+                        className: "success",
+												position:"top-center",
+                    }).showToast();
+                    location.reload();
+                },
+                error: function(error) {
+                    // If there was an error deleting the block, display an error message using Toastify
+                    Toastify({
+                        text: "Error deleting block: " + error.responseText,
+                        backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+                        className: "error",
+												position:"top-center",
+                    }).showToast();
+                }
+            });
+        }
+    });
+});
+
+			</script>
+
+	<!-- EDIT -->
+	<script>
+         function setFocus(on) {
+            var element = document.activeElement;
+            if (on) {
+                setTimeout(function () {
+                element.parentNode.classList.add("focus");
+                });
+            } else {
+                let box = document.querySelector(".input-box");
+                box.classList.remove("focus");
+                $("input").each(function () {
+                var $input = $(this);
+                var $parent = $input.closest(".input-box");
+                if ($input.val()) $parent.addClass("focus");
+                else $parent.removeClass("focus");
+                });
+            }
+            }
+		// Attach event listener to edit icon
+		// Attach event listener to edit icon
+		$(".edit").click(function() {
+		    var id = $(this).attr("data-id");
+		    console.log("edit", id);
+
+		    // Send AJAX request to fetch block details
+		    $.ajax({
+		        url: "/api/blocks/" + id,
+		        method: "GET",
+		        success: function(response) {
+		            // If the block details were successfully fetched, display them in the input form inside the SweetAlert popup
+		            Swal.fire({
+		                html: `<h5>Update Block</h5>
+		                        <form>
+		                            <div class="form-group">
+		                                <div class="input-box">
+		                                    <label class="input-label">Block Name</label>
+		                                    <input type="text" class="input-1" onfocus="setFocus(true)" id="block-name" onblur="setFocus(false)" value="${response.block_name}" />
+		                                </div>
+
+		                                <div class="input-box active-grey">
+		                                    <label class="input-label">Block Type</label>
+		                                    <select class="input-1" onfocus="setFocus(true)" onblur="setFocus(false)" id="block-type" >
+		                                        <option value="boys" ${response.type === "boys" ? "selected" : ""}>Boys Hostel</option>
+		                                        <option value="girls" ${response.type === "girls" ? "selected" : ""}>Girls Hostel</option>
+		                                    </select>
+		                                </div>
+
+		                                <div class="input-box">
+		                                    <label class="input-label">Number of Rooms</label>
+		                                    <input type="text" class="input-1" onfocus="setFocus(true)" id="num-rooms" onblur="setFocus(false)" disabled value="${response.rooms.length}" />
+		                                </div>
+
+		                                <div class="input-box active-grey">
+		                                    <label class="input-label">Status</label>
+		                                    <select class="input-1" onfocus="setFocus(true)" onblur="setFocus(false)" id="status" >
+		                                        <option value="available" ${response.status === "available" ? "selected" : ""}>Available</option>
+		                                        <option value="unavailable" ${response.status === "unavailable" ? "selected" : ""}>Unavailable</option>
+		                                    </select>
+		                                </div>
+
+
+		                            </div>
+		                        </form>`,
+		                showCancelButton: true,
+		                showConfirmButton: true,
+										confirmButtonColor: "#ff4b13",
+										cancelButtonColor: "#000",
+										confirmButtonText: "Update",
+										preConfirm: () => {
+									    // Retrieve the values of the input fields
+									    const blockName = document.getElementById('block-name').value;
+									    const blockType = document.getElementById('block-type').value;
+									    const numRooms = document.getElementById('num-rooms').value;
+									    const status = document.getElementById('status').value;
+									    // Return the values as an object
+									    return { blockName, blockType, numRooms, status };
+									  }
+
+		            }).then((result) => {
+		                if (result.isConfirmed) {
+											const {blockName, blockType, numRooms, status} = result.value;
+											console.log(blockName)
+
+
+											$.ajax({
+													url: "/api/blocks/" + id,
+													method: "PUT",
+													data: { block_name: blockName, type:blockType, no_of_rooms:numRooms, status: status   },
+													success: function(response) {
+															// If the block was successfully updated, display a success message using Toastify and reload the page
+															Toastify({
+																	text: "Block updated successfully!",
+																	backgroundColor: "linear-gradient(to right, #00b09b, #96c93d)",
+																	className: "success",
+																	position:"top-center",
+															}).showToast();
+															location.reload();
+													},
+													error: function(error) {
+															// If there was an error updating the block, display an error message using Toastify
+															Toastify({
+																	text: "Error updating block: " + error.responseText,
+																	backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+																	className: "error",
+																	position:"top-center",
+															}).showToast();
+													}
+											});
+		                }
+		            });
+		        },
+		        error: function(error) {
+		            // If there was an error fetching the block details, display an error message using Toastify
+		            Toastify({
+		                text: "Error fetching block details: " + error.responseText,
+		                backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+		                className: "error",
+		            }).showToast();
+		        }
+		    });
+		});
+	</script>
+
+
+</body>
+
+</html>

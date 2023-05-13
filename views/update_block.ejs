@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="/js/index.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    UPDATE HERE
+   <!-- include header -->
+<!-- /include header -->
+<h1>Block Name; <%= block.block_name %></h1>
+<!-- Main Site -->
+
+<main id="site-main">
+  <div class="container">
+    <div class="box-nav d-flex justify-between">
+      <div class="filter">
+        <a href="/"><i class="fas fa-angle-double-left"></i> All Blocks</a>
+      </div>
+    </div>
+
+    <div class="form-title text-center">
+      <h2 class="text-dark">Update Block</h2>
+      <span class="text-light">Use the form below to update a block</span>
+    </div>
+
+    <form method="POST" id="update-block-form">
+      <div class="new_block">
+        <input type="hidden" name="block_id" value="<%= block._id %>">
+
+        <div class="form-group">
+          <label for="block_name" class="text-light">Block Name</label>
+          <input type="text" name="block_name" id="block_name" class="form-control" value="<%= block.block_name %>"
+            placeholder="Enter block name">
+        </div>
+
+        <div class="form-group">
+          <label for="no_of_rooms" class="text-light">Number of Rooms</label>
+          <input type="text" name="no_of_rooms" id="no_of_rooms" class="form-control"
+            value="<%= block.no_of_rooms %>" placeholder="Enter number of rooms">
+        </div>
+
+        <div class="form-group">
+          <label for="type" class="text-light">Block Type</label>
+          <select name="type" id="type" class="form-control">
+            <option value="boys" <%= block.type === 'boys' ? 'selected' : '' %>>Boys</option>
+            <option value="girls" <%= block.type === 'girls' ? 'selected' : '' %>>Girls</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="status" class="text-light">Block Status</label>
+          <select name="status" id="status" class="form-control">
+            <option value="available" <%= block.status === 'available' ? 'selected' : '' %>>Available</option>
+            <option value="unavailable" <%= block.status === 'unavailable' ? 'selected' : '' %>>Unavailable</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn text-light update">Save Changes</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
+<!-- /Main Site -->
+<script>
+    $("#update-block-form").submit(function (event) {
+  event.preventDefault();
+  console.log("jnckadvjsn")
+
+
+  var unindexed_array = $(this).serializeArray();
+  var data = {};
+
+  $.map(unindexed_array, function (n, i) {
+    data[n["name"]] = n["value"];
+  });
+
+  var request = {
+    url: `/api/blocks/${data.block_id}`,
+    method: "PUT",
+    data: data,
+  };
+
+  console.log("data from js", data);
+
+  $.ajax(request).done(function (response) {
+    alert("Block data updated successfully!");
+    // Redirect to the updated block's page
+    window.location.href = `/`;
+  });
+});
+
+</script>
+
+
+</body>
+</html>

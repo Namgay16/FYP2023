@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>404 - Page Not Found</title>
+	<style>
+		body {
+			background-color: #f7f7f7;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			text-align: center;
+		}
+
+		.heading {
+			font-size: 5rem;
+			font-weight: bold;
+			margin: 0;
+			color: #fe5f55;
+			text-shadow: 0 0 1px #fe5f55, 0 0 2px #fe5f55, 0 0 3px #fe5f55, 0 0 4px #fe5f55, 0 0 5px #fe5f55;
+		}
+
+		.subheading {
+			font-size: 2rem;
+			margin: 0;
+			color: #000;
+		}
+
+		.btn-container {
+			margin-top: 2rem;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 0.8rem 2.4rem;
+			background-color: #fe5f55;
+			color: #fff;
+			font-size: 1.6rem;
+			font-weight: bold;
+			text-transform: uppercase;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+			transition: all 0.3s ease-in-out;
+		}
+
+		.btn:hover {
+			background-color: #fe423f;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1 class="heading">404</h1>
+		<p class="subheading">Oops! Page not found</p>
+		<div class="btn-container">
+			<button class="btn" onclick="goBack()">Go Back</button>
+		</div>
+	</div>
+	<script>
+		function goBack() {
+			window.history.back();
+		}
+	</script>
+</body>
+</html>

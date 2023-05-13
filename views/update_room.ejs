@@ -1,0 +1,50 @@
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<form method="POST" id="add">
+    <input type="hidden" name="room_id" value="<%= room._id %>">
+
+    <input type="text" placeholder="room_name" name="room_name" value="<%= room.room_name %>" />
+
+    <input type="number" placeholder="room_capacity" name="room_capacity" value="<%= room.room_capacity %>" />
+
+    <input type="text" placeholder="isDisabled" name="isDisabled" value="<%= room.isDisabled %>" />
+
+    <input type="number" placeholder="window" name="window" value="<%= room.window %>" />
+
+    <input type="text" placeholder="status" name="status" value="<%= room.status %>" />
+
+    <input type="text" placeholder="blockid" name="blockid" value="<%= room.block_id %>" />
+
+    <input type="submit" value="Submit" />
+
+</form>
+
+<script>
+    $("#add").submit(function (event) {
+  event.preventDefault();
+  console.log("jnckadvjsn")
+
+
+  var unindexed_array = $(this).serializeArray();
+  var data = {};
+
+  $.map(unindexed_array, function (n, i) {
+    data[n["name"]] = n["value"];
+  });
+
+  var request = {
+    url: `/room/api/rooms/${data.room_id}`,
+    method: "PUT",
+    data: data,
+  };
+
+  console.log("data from js", data);
+
+  $.ajax(request).done(function (response) {
+    alert("Block data updated successfully!");
+    // Redirect to the updated block's page
+    window.location.href = `/room`;
+  });
+});
+</script>

@@ -1,0 +1,33 @@
+<!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.28.0/dist/apexcharts.min.js"></script>
+
+<% if (chart && Object.keys(chart).length > 0) { %>
+  <div id="chart"></div>
+
+  <script>
+    const chartData = <%= JSON.stringify(chart) %>;
+
+    var options = {
+      chart: {
+        type: 'bar',
+        height: 350
+      },
+      series: [{
+        name: 'Male',
+        data: chartData.map((item) => item.male)
+      }, {
+        name: 'Female',
+        data: chartData.map((item) => item.female)
+      }],
+      xaxis: {
+        categories: chartData.map((item) => item.year)
+      }
+    }
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    chart.render();
+  </script>
+
+<% } else { %>
+  <div>Error: no data to display</div>
+<% } %> -->

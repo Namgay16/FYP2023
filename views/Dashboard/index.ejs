@@ -1,0 +1,138 @@
+<%- include('../required/header') %>
+
+<main id="index-content">
+			<main id="block">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 ">
+						<div class="shadow-box-index add-block-index">
+							<% if(username) { %>
+							<p class="block-title-1">Warm greetings <span><%= username %></span></p>
+							<% } else { %>
+								<p class="block-title-1">Warm greetings <span>Rannas</span></p>
+							<% } %>
+
+						</div>
+					</div>
+					<div class="col-lg-8 col-md-8 col-sm-8 block1">
+						<div class="shadow-box-graph add-block greetings">
+							<p class="tota">Total student</p>
+							<p class="gra-tota"><%= students.length %></p>
+						
+
+							<canvas id="myChart" style="height: 120px; width: 300px; min-height: 100px;"></canvas>
+						</div>
+					</div>
+					<div id="gra" class="col-lg-4 col-md-4 col-sm-4 block1 rr">
+						<div class="shadow-box-first add-block flow">
+							<div class="chi">
+								<div class="fle">
+									<p class="std-no numb"><%= students.length %></p>
+									<p class="std-no wor">Students</p>
+								</div>
+								<div class="us">
+									<i class="fas fa-user "></i>
+								</div>
+							</div>
+							<div class="chi">
+								<div class="fle">
+									<p class="std-no numb"><%= blocks.length %></p>
+									<p class="std-no wor blo">Blocks</p>
+								</div>
+								<div class="us">
+									<i class='far fa-building'></i>
+								</div>
+							</div>
+							<div class="chi">
+								<div class="fle">
+									<p class="std-no numb"><%= rooms.length %></p>
+									<p class="std-no wor roo">Rooms</p>
+								</div>
+								<div class="us">
+									<i class='bx bx-home'></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-12 col-md-12 col-sm-12 ">
+						<div class="shadow-box-table add-block-table">
+							<h6 class="text-center pt-5 recent">Recent Activity</h6>
+							<%- include('./table.ejs') %>
+					</div>
+
+				</div>
+			</main>
+		</main>
+
+	</section>
+
+	<script>
+		// Set the token and username in the local storage
+		localStorage.setItem("token", "<%= token %>");
+		localStorage.setItem("username", "<%= username %>");
+	  </script>
+	<!-- NAVBAR -->
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+		<script>
+		console.log("inside")
+		const groupedData = <%- JSON.stringify(chart) %>;
+		console.log(groupedData)
+		
+
+// Convert the grouped data to an array of objects
+const chartData = Object.entries(groupedData).map(([year, data]) => {
+  return {
+	year: year.slice(4), // remove the "year" prefix from the key
+	male: data.M,
+	female: data.F,
+  };
+});
+
+// Create a new Chart.js instance
+const ctx = document.getElementById('myChart').getContext('2d');
+const chart = new Chart(ctx, {
+  type: 'bar',
+  data: {
+	labels: chartData.map((d) => "year " + d.year),
+	datasets: [
+	  {
+		label: 'Male',
+		backgroundColor: 'rgba(255, 75, 19, 0.3)',
+		borderColor: '#ff4b13',
+		borderWidth: 1,
+		data: chartData.map((d) => d.male),
+	  },
+	  {
+		label: 'Female',
+		backgroundColor: 'rgba(0, 0, 0, 0.3)',
+		borderColor: '#000000',
+		borderWidth: 1,
+		data: chartData.map((d) => d.female),
+	  },
+	],
+  },
+  options: {
+	title: {
+	  display: true,
+	  text: 'Students by Year and Gender',
+	},
+	scales: {
+	  xAxes: [{
+		stacked: true,
+	  }],
+	  yAxes: [{
+		stacked: true,
+		ticks: {
+		  beginAtZero: true,
+		},
+	  }],
+	},
+  },
+});
+	</script>
+
+</body>
+
+</html>
+

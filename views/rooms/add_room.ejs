@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Create a New Room</h1>
+
+<form id="create-room-form">
+  <label for="room-name">Room Name:</label>
+  <input type="text" id="room-name" name="room_name" required>
+  
+  <label for="room-capacity">Room Capacity:</label>
+  <input type="number" id="room-capacity" name="room_capacity" required>
+  
+  <label for="block-id">Block ID:</label>
+  <input type="text" id="block-id" name="blockid" required>
+  
+  <label for="is-disabled">Is Disabled:</label>
+  <input type="checkbox" id="is-disabled" name="isDisabled">
+  
+  <label for="status">Status:</label>
+  <select id="status" name="status">
+    <option value="available">Available</option>
+    <option value="occupied">Occupied</option>
+    <option value="maintenance">Maintenance</option>
+  </select>
+  
+  <button type="submit">Create Room</button>
+</form>
+
+<div id="message"></div>
+
+<script>
+  const form = document.querySelector('#create-room-form');
+  const message = document.querySelector('#message');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    
+    const roomName = document.querySelector('#room-name').value;
+    const roomCapacity = document.querySelector('#room-capacity').value;
+    const blockId = document.querySelector('#block-id').value;
+    const isDisabled = document.querySelector('#is-disabled').checked;
+    const status = document.querySelector('#status').value;
+    
+    try {
+      const response = await fetch('api/rooms', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          room_name: roomName,
+          room_capacity: roomCapacity,
+          blockid: blockId,
+          isDisabled: isDisabled,
+          status: status
+        })
+      });
+      
+      if (response.ok) {
+        message.textContent = 'Room created successfully!';
+        form.reset();
+      } else {
+        const errorMessage = await response.text() || 'Failed to create room';
+        message.textContent = errorMessage;
+      }
+    } catch (err) {
+      console.error(err);
+      message.textContent = 'Failed to create room';
+    }
+  });
+</script>
+</body>
+</html>

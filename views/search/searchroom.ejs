@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- HTML code for the search form -->
+<form id="search-form">
+  <label for="room-name">Room Name:</label>
+  <input type="text" id="room-name" name="room_name">
+  <button type="submit">Search</button>
+</form>
+
+<!-- HTML code for displaying the search results -->
+<div id="search-results"></div>
+
+<!-- JavaScript code for handling the form submission -->
+<script>
+  const searchForm = document.querySelector("#search-form");
+  const searchResults = document.querySelector("#search-results");
+
+  searchForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    
+    const roomName = searchForm.elements.room_name.value;
+
+    const response = await fetch(`http://localhost:5000/room/api/search?room_name=${roomName}`);
+    const data = await response.json();
+
+    if (response.ok) {
+      const room = data.room;
+      searchResults.innerHTML = `<p>Room Name: ${room.room_name}</p>
+                                  <p>Room Capacity: ${room.room_capacity}</p>
+                                  <p>Is Disabled: ${room.isDisabled}</p>
+                                  <p>Status: ${room.status}</p>`;
+    } else {
+      searchResults.innerHTML = `<p>${data.message}</p>`;
+    }
+  });
+</script>
+
+</body>
+</html>

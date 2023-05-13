@@ -1,0 +1,412 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+* {
+  font-family: "Helvetica", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --grey: #f1f0f6;
+  --dark-grey: #8d8d8d;
+  --light: #fff;
+  --dark: #000;
+  --green: #81d43a;
+  --light-green: #e3ffcb;
+  --orange: #ff7f18;
+  --light-blue: #d0e4ff;
+  --dark-blue: #0c5fcd;
+  --red: #fc3b56;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.6;
+  color: #ff4b13;
+  background: #ffffff;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+/* CONTENT */
+#content {
+  position: relative;
+  width: 100%;
+  /* content responsive on side navigation open */
+  transition: all 0.3s ease;
+}
+
+/* NAVBAR */
+.box-menu {
+  margin-left: 10.4rem;
+  margin-top: 43px;
+  color: #ff4b13;
+}
+nav {
+  width: 100%;
+  background: var(--light);
+  height: 100px;
+  padding: 0 20px;
+  display: fixed;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 28px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0px 3px 10px #cfcfcf;
+}
+
+.btn {
+  background-color: #ff4b13;
+  width: 30px;
+  height: 35px;
+  color: none;
+  border-radius: 10px;
+  position: sticky;
+  margin-left: 86%;
+  margin-top: -43px;
+  opacity: 10%;
+}
+.btnn {
+  background-color: #ff4b13;
+  width: 30px;
+  height: 35px;
+  color: none;
+  border-radius: 10px;
+  position: absolute;
+  margin-left: -0.4rem;
+  margin-top: -1.8rem;
+  opacity: 10%;
+}
+nav .toggle-sidebar {
+  font-size: 22px;
+  cursor: pointer;
+}
+nav .pro {
+  border: 2px solid #ff4b13;
+  border-radius: 20px;
+  margin-left: -5.5rem;
+  width: 60px;
+  height: 30px;
+  margin-top: -2.4rem;
+}
+nav .iconn {
+  position: absolute;
+  margin: 0.2rem 0 0 2rem;
+  color: #ff4b13;
+  font-size: 22px;
+  cursor: pointer;
+}
+nav .profile {
+  position: absolute;
+  float: right;
+  margin-top: 4.5rem;
+  margin-left: 98.5%;
+}
+nav .profile img {
+  float: right;
+  width: 24px;
+  height: 24px;
+  margin-top: 0.1rem;
+  margin-right: 1.9rem;
+  border-radius: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1.5px solid #ff4b13;
+  background-color: #ff4b13;
+}
+nav .profile .profile-link {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--light);
+  padding: 10px 0;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 160px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+nav .profile .profile-link.show {
+  opacity: 1;
+  pointer-events: visible;
+  top: 100%;
+}
+nav .profile .profile-link a {
+  padding: 10px 16px;
+  display: flex;
+  grid-gap: 10px;
+  font-size: 14px;
+  color: var(--dark);
+  align-items: center;
+  transition: all 0.3s ease;
+}
+nav .profile .profile-link a:hover {
+  background: var(--grey);
+}
+.container {
+  max-width: 250px;
+  margin: 10rem 0 0 10rem;
+
+  text-align: center;
+
+  transform: rotate(0);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Style the date and time */
+#currentDate,
+#currentTime {
+  margin-top: 10px;
+  padding-right: 1rem;
+  font-size: 16px;
+  color: #4f4f4f;
+  font-weight: bold;
+}
+/* Block div  */
+.shadow-box {
+  box-shadow: 0px 3px 10px #cfcfcf; /* adds a box shadow */
+  height: 75px;
+  background-color: #ffffff; /* sets the background color */
+  border-radius: 5px; /* rounds the corners */
+  opacity: 90%;
+  margin: 0px -0.7rem 0 0rem;
+}
+#block {
+  width: 100%;
+  padding-top: 6.9rem;
+}
+#block .welcome {
+  font-size: 20px;
+  text-align: left;
+  margin: -1rem 1px 1px 1px;
+  color: #ff4b13;
+  opacity: 90%;
+  position: absolute;
+}
+.wek {
+  margin-top: 0rem;
+}
+.bx-smile {
+  margin: 0.65rem 0 0 12.5rem;
+  position: absolute;
+  font-size: 24px;
+  opacity: 90%;
+}
+.nice-day {
+  color: #4f4f4f;
+  opacity: 90%;
+  margin-top: 2.4rem;
+  font-size: 16px;
+  padding-left: 0rem;
+}
+#block .button {
+  box-shadow: 0px 3px 10px #cfcfcf;
+  background-color: #ff4b13;
+  color: White;
+  border-radius: 5px;
+  width: 100%;
+  font-size: 20px;
+  cursor: pointer;
+  height: 75px;
+  border: none;
+}
+.box-welcome {
+  text-align: center;
+  opacity: 90%;
+}
+.request {
+  color: #ffffff;
+  font-size: 24px;
+  margin-left: -6rem;
+}
+
+.my-proDetails {
+  box-shadow: 0px 3px 10px #cfcfcf;
+  background-color: #ffffff;
+  border-radius: 5px; /* rounds the corners */
+  margin: 1.3rem -0.6rem 0 0;
+
+  height: 425px;
+}
+
+.hed {
+  color: #ff4b13;
+  opacity: 90%;
+}
+.dee {
+  color: #ff4b13;
+  opacity: 90%;
+  margin-top: -2rem;
+}
+.de {
+  color: #4f4f4f;
+  opacity: 90%;
+}
+.img1 {
+  width: 150px;
+  border-radius: 50%;
+  display: block;
+  background-color: white;
+  border: 1.5px solid black;
+  margin-left: auto;
+  margin-right: auto;
+}
+.img1a{
+  margin-top: 1%;
+}
+.profile-details {
+  font-size: 16px;
+  color: #4f4f4f;
+  opacity: 90%;
+  text-align: left;
+  margin-top: -0.5rem;
+  border-radius: 5px;
+}
+
+.butt1 {
+  width: 30%;
+  border: 1.5px solid #ff4b13;
+  border-radius: 5px;
+  background-color: #ffffff;
+  opacity: 90%;
+  font-size: 16px;
+  color: #ff4b13;
+  height: 40px;
+}
+
+.butt2 {
+  width: 30%;
+  color: #ff4b13;
+  border: 1.5px solid #ff4b13;
+  border-radius: 5px;
+  background-color: #ffffff;
+  opacity: 90%;
+  font-size: 16px;
+  margin-left: 2rem;
+  height: 40px;
+}
+.my-box1 {
+  box-shadow: 0px 3px 10px #cfcfcf;
+  height: 425px;
+  background-color: #ffffff;
+  opacity: 90%; /* sets the background color */
+  border-radius: 5px; /* rounds the corners */
+  margin: 1.3rem 0 0 0;
+  overflow-y: auto;
+}
+#block .roommate {
+  font-size: 20px;
+  opacity: 90%;
+  padding-top: 0.6rem;
+  color: #ff4b13;
+}
+.con {
+  width: 99.9%;
+  margin-left: 1px;
+  margin-top: 0.6rem;
+}
+
+.table tr {
+  width: 96%;
+  margin-left: 1rem;
+  color: #ffffff;
+}
+
+.table td,
+.table th {
+  padding: 1rem;
+  vertical-align: top;
+  border: 1px solid #d7c8c8;
+  opacity: 90%;
+}
+.table tbody tr {
+  color: #4f4f4f;
+}
+.table thead th {
+  vertical-align: bottom;
+  border: 2px solid #e9e0e0;
+  background: #ff4b13;
+  opacity: 90%;
+}
+
+.footer {
+  background-color: white;
+  margin-top: 1.4rem;
+  color: rgba(52, 51, 51, 0.787);
+  box-shadow: 0px 3px 10px #cfcfcf;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  height: 79px;
+}
+@media (max-width: 767px) {
+  .my-proDetails {
+    margin: 0.85rem -0.25rem 0 -0.3rem;
+    padding-bottom: 2rem;
+  }
+  #block .shadow-box,
+  #block .button {
+    height: 65px;
+  }
+  #block .shadow-box {
+    margin: -0.4rem -0.25rem 0 -0.3rem;
+  }
+  #block .button {
+    margin-top: -3.45rem;
+    right: 1.25rem;
+    width: 155px;
+    height: 45px;
+    position: absolute;
+    font-size: 14px;
+  }
+  #block .welcome {
+    font-size: 16px;
+    margin-top: -0.8rem;
+  }
+  #block .nice-day {
+    margin-top: 2rem;
+    font-size: 14px;
+  }
+  #block .roomc {
+    padding-top: 5px;
+    right: 10%;
+  }
+  #block .bx-smile {
+    margin-top: 0.6rem;
+    margin-left: 10.6rem;
+    font-size: 24px;
+  }
+  #block .request {
+    font-size: 16px;
+    right: 9rem;
+    position: absolute;
+    top: -4rem;
+  }
+  .my-box1 {
+    margin: 0.9rem -0.3rem 0 -0.3rem;
+  }
+  .footer {
+    margin-top: 0.9rem;
+  }
+}

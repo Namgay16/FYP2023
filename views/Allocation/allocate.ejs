@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Allocations by year</h1>
+    <% if(allocate && allocate.length > 0)  { %>
+        <% for(var i = 0; i < allocate.length; i++) { %>
+            <p><%= allocate[i].student %><P>
+            <p><%= allocate[i].student_name %><P>
+            <p><%= allocate[i].year %><P>
+            <p><%= allocate[i].room_name %><P>
+            <p><%= allocate[i].block_name %><P>
+            
+            
+
+        <% } %>
+    <% } else { %>
+        <p>No allocation found</p>
+        <p>Create new alllocation</p>
+        <button>Create</button>
+    <% } %>
+</body>
+</html>

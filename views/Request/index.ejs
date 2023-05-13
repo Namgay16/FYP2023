@@ -1,0 +1,292 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+</head>
+<body>
+    <h1>Request Page</h1>
+    <% for(var i = 0; i < requests.length; i++) { %>
+
+        <p><%= requests[i].student %></p>
+        <button onclick="showAlert()">Accept</button>
+        <button onclick="showAlert()">Reject</button>
+
+    <% } %>
+</body>
+<script>
+   function showAlert(){
+    swal("Hello")
+   }
+</script>
+</html> -->
+
+<%- include('../required/header.ejs') %>
+
+<main>
+    <main id="block15">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="bx-shadow ">
+                    <p class="heading-search text-left pl-2 pb-0">Search for student and room details</p>
+                </div>
+            </div>
+            <% if(requests.length > 0) { %>
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <% for(var i = 0; i < requests.length; i++) { %>
+                    <% if(requests[i].clicked === false) { %>
+                <div class="bx-shadow1">
+                    <br>
+                    <div class="col-lg-12 col-md-12 col-sm-6 search-bx bx-1 " id="myDiv">
+                        <i class="material-icons icon position-absolute  pt-4 ml-2 "><%= requests[i].student_gender === "F" ? "female" : "male" %></i>
+                        <h6 class="fs-1 fst-bold pt-4 pl-5 "> <b class="mt-3"> <%= requests[i].student_name %> </b></h6>
+                        <p class="fw-300 ml-5 mt-4 mb-0 custom-line-height nameee"
+                            style="color:#4f4f4f; opacity:90%;">
+                            <span class="ml-0"><%= requests[i].student_course %> </span>
+                        </p>
+                        <p class="fw-300 ml-5 mt-1 mb-2 custom-line-height nameee"
+                            style="color:#4f4f4f; opacity:90%;">
+                            <span class="ml-0"><%= requests[i].student_year %></span><span class="ml-1">IV</span>
+                        </p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-6 search-bx bx-2" id="myDiv">
+                        <p class="ml-3 mt-4">Current room details</p>
+                       
+                        <p class="fw-300 ml-3 mt-2 mb-0 custom-line-height" style="color:#4f4f4f; opacity:90%;">
+                            <span class="ml-0">Block: </span>
+                            <% for(var j = 0; j < blocks.length; j++) { %>
+                                <% if(requests[i].block == blocks[j]._id) { %>
+                                <b class="ml-4" style="color:#ff4b13"><%= blocks[j].block_name %></b>
+                                <% } %>
+                            <%  } %>
+                        </p>
+                        
+                       
+                        <p class="fw-300 ml-3 mt-1 mb-5 custom-line-height" style="color:#4f4f4f; opacity:90%;">
+                            <span class="ml-0">Room: </span> 
+                            <% for(var j = 0; j < rooms.length; j++) { %> 
+                                <% console.log(rooms[j]._id)
+                                console.log( requests[i].room)
+                                if(rooms[j]._id == requests[i].room) { %>                         
+                                <b class="ml-4" style="color:#ff4b13"><%= rooms[j].room_name %></b>
+                                <% } %>
+                            <% } %>
+                        </p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-6 search-bx bx-3" id="myDiv">
+                        <p class="ml-3 mt-4">Requested room details</p>
+                        <p class="fw-300 ml-3 mt-2 mb-0 custom-line-height" style="color:#4f4f4f; opacity:90%;">
+                            <span class="ml-0">Block: </span>
+                            <% for(var j = 0; j < blocks.length; j++) { %>
+                                <% if(requests[i].targetblock == blocks[j]._id) { %>
+                            <b class="ml-4" style="color:#ff4b13"><%= blocks[j].block_name %> </b>
+                            <% } %>
+                            <% } %>
+                        </p>
+                        <p class="fw-300 ml-3 mt-1 mb-4 custom-line-height" style="color:#4f4f4f; opacity:90%;">
+                            <span class="ml-0">Room: </span>
+                            <% for(var j = 0; j < rooms.length; j++) { %>
+                                <% if(rooms[j]._id == requests[i].targetroom) { %>
+                            <b class="ml-4" style="color:#ff4b13"><%= rooms[j].room_name  %></b>
+                            <% } %>
+                            <% } %>
+                        </p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-6 search-bx bx-4 " id="myDiv">
+                        <button data-id="<%= requests[i]._id %>" class="mt-5 mb-3 p-1 ml-2 accept-btn">Accept</button>
+                        <button data-id="<%= requests[i]._id %>" class="reject-btn p-1 ml-2 ">Reject</button>
+                    </div>
+
+                    <br>
+                </div>
+                <% } %>
+                <% } %>
+                
+            </div>
+            <% } else { %>
+                <h5>No request as of now</h5>
+            <% } %>
+        </div>
+    </main>
+</main>
+<br>
+</section>
+
+</body>
+
+</main>
+<!-- MAIN -->
+</section>
+<!-- NAVBAR -->
+
+<script>
+    function setFocus(on) {
+        var element = document.activeElement;
+        if (on) {
+            setTimeout(function () {
+            element.parentNode.classList.add("focus");
+            });
+        } else {
+            let box = document.querySelector(".input-box");
+            box.classList.remove("focus");
+            $("input").each(function () {
+            var $input = $(this);
+            var $parent = $input.closest(".input-box");
+            if ($input.val()) $parent.addClass("focus");
+            else $parent.removeClass("focus");
+            });
+        }
+        }
+</script>
+
+<script>
+    $(document).ready(function() {
+$(".accept-btn").click(function() {
+    var id = $(this).attr("data-id");
+    console.log(id);
+// Show confirmation message using SweetAlert2
+Swal.fire({
+html: `<h5>Accept</h5>
+	<form>
+	    <div class="form-group">
+		    <div class="input-box">
+		        <label class="input-label">Remarks</label>
+		        <textarea type="text" class="input-1"  style="height: 150px;" onfocus="setFocus(true)" id="remarks" onblur="setFocus(false)"></textarea>
+		    </div>
+		</div>
+	</form>
+        `,
+        showCancelButton: true,
+        showConfirmButton: true,
+        confirmButtonColor: "#ff4b13",
+        cancelButtonColor: "#000",
+        confirmButtonText: "Okay",
+        preConfirm: () => {          
+            const remarks = document.getElementById('remarks').value;
+            // Return the values as an object
+            return { remarks };
+        }
+}).then((result) => {
+console.log("confirm result")
+if (result.isConfirmed) {
+    // Send AJAX request to delete block
+                const { remarks } = result.value;
+                const status = "accepted"            
+                fetch(`request/update/${id}`, {
+                method: 'PUT',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ remarks, status })
+                })
+                .then(response => {
+                if (!response.ok) {
+                console.log("response", response)
+                throw new Error(response);
+                }
+                Toastify({
+                text: 'Successfully Granted the request!',
+                backgroundColor: 'linear-gradient(to right, #96c93d, #00b09b)',
+                className: 'success',
+                position: 'top-center',
+                }).showToast();
+                window.location.reload();
+                })
+                .catch(error => {
+                console.error(error);
+                Toastify({
+                text: 'Error : ' + error.message,
+                backgroundColor: 'linear-gradient(to right, #ff5f6d, #ffc371)',
+                className: 'error',
+                position: 'top-center',
+                }).showToast();
+                });
+
+                                console.log("after ajax")
+
+                }
+                });
+                });
+                });
+</script>
+
+<script>
+    $(document).ready(function() {
+$(".reject-btn").click(function() {
+    var id = $(this).attr("data-id");
+    console.log(id);
+// Show confirmation message using SweetAlert2
+Swal.fire({
+html: `<h5>Reject</h5>
+	<form>
+	    <div class="form-group">
+		    <div class="input-box">
+		        <label class="input-label">Remarks</label>
+		        <textarea type="text" class="input-1"  style="height: 150px;" onfocus="setFocus(true)" id="remarks" onblur="setFocus(false)"></textarea>
+		    </div>
+		</div>
+	</form>
+        `,
+        showCancelButton: true,
+        showConfirmButton: true,
+        confirmButtonColor: "#ff4b13",
+        cancelButtonColor: "#000",
+        confirmButtonText: "Okay",
+        preConfirm: () => {          
+            const remarks = document.getElementById('remarks').value;
+            // Return the values as an object
+            return { remarks };
+        }
+}).then((result) => {
+console.log("confirm result")
+if (result.isConfirmed) {
+    // Send AJAX request to delete block
+                const { remarks } = result.value;
+                const status = "rejected"            
+                fetch(`request/update/${id}`, {
+                method: 'PUT',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ remarks, status })
+                })
+                .then(response => {
+                if (!response.ok) {
+                console.log("response", response)
+                throw new Error(response);
+                }
+                Toastify({
+                text: 'You have Rejected the request!',
+                backgroundColor: 'linear-gradient(to right, #96c93d, #00b09b)',
+                className: 'success',
+                position: 'top-center',
+                }).showToast();
+                window.location.reload();
+                })
+                .catch(error => {
+                console.error(error);
+                Toastify({
+                text: 'Error : ' + error.message,
+                backgroundColor: 'linear-gradient(to right, #ff5f6d, #ffc371)',
+                className: 'error',
+                position: 'top-center',
+                }).showToast();
+                });
+
+                        
+
+                }
+                });
+                });
+                });
+</script>
+
+
+
+</body>
+
+</html>

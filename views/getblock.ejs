@@ -1,0 +1,41 @@
+
+   <%- include('./required/header') %>
+   <main id="block">
+    <div class="row">
+      <% for(var i = 0; i < blocks.length; i++) { %>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="shadow-box">
+          <p class="status">Block status: <span clas="act" style="color:#ff4b13"><%= blocks[i].status %></span></p>
+          <div class="block-details">
+            <i class="material-icons icon"><%= blocks[i].type %></i>
+            <h5 class="bname"><%= blocks[i].block_name %></h5>
+            <i class="bx bx-edit edit-icon"></i>
+            <i class="bx bx-trash trash-icon"></i>
+          </div>
+          <div class="room-details pt-4">
+            <h5 class="room-number "><%= blocks[i].rooms.length %></h5>
+            <span class="room-total">Total rooms</span>
+          </div>
+          <div class="student-details pt-4">
+            <h5 class="room-number">12</h5>
+            <span class="tot mt-4">Total students</span>
+          </div>
+          <button class="btn button mt-4 text-center">
+            <p>View rooms</p>
+          </button>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+  </main>
+
+
+  <!-- MAIN -->
+
+  <!-- NAVBAR -->
+
+
+</body>
+
+</html>

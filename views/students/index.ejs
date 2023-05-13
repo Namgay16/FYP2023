@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+	<link rel="shortcut icon" href="/img/hostel.png" type="image/x-icon">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.0/dist/sweetalert2.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.0/dist/sweetalert2.min.js"></script>
+	
+
+
+
+	<!-- Bootstrap link -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+
+	<link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+		integrity="sha384-HSZ7Ld1Gg5+8oWchX9zv5V5jLQQaQ8VwW5PD5D59pZa0TKOkuL8Jm9zvNSm7gJcu" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.bx.io/boxicons/4.0.0/css/boxicons.min.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+	<link rel="stylesheet" type="text/css" href="path/to/helvetica-font-file.ttf">
+	<link rel="stylesheet" href="/css/student.css">
+	<link rel="stylesheet" href="/css/swal.css">
+
+	<style>
+		button:focus {
+  outline: none;
+}
+	</style>
+	<title>Home</title>
+</head>
+
+<body>
+	<!-- NAVBAR -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<div>
+				<div>
+					<a href="/student/index.ejs" class="brand" style="position:absolute;"><img src="/img/hostel.png" alt=""
+							style="width:48px; margin-left:.8rem; margin-top:33px;"></a>
+
+				</div>
+			</div>
+			
+			<div class="profile">
+				<div class="pro">
+					<img src="/img/pro2.jpeg">
+					<i class='bx bx-cog iconn'></i>
+				</div>
+				<ul class="profile-link">
+					<li><a href="Profile.html"><i class='bx bxs-user-circle icon'></i> Profile</a></li>
+					<li><a href="Login/index.ejs"><i class='bx bxs-log-out-circle'></i> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<% if(userdata) { %>
+		<main>
+			<main id="block">
+				<div class="row con">
+					<div class="col-lg-9 col-md-8 col-sm-12">
+						<div class="shadow-box">
+							<p class="welcome ml-4 pb-1 pt-4 wek"> Welcome <%= userdata.name %>!
+							</p>
+							<p class="nice-day ml-4 pb-1 position-absolute">Have a nice day
+							</p>
+							
+						</div>
+					</div>
+
+					<div class="col-lg-3 col-md-4 col-sm-12 box-welcome">
+						
+							<div class="text-center"><i
+									class='bx bx-git-pull-request position-absolute mt-4 request'></i></div>
+							<button class="button add" data-id=<%= userdata.sid %>> 
+								<p class="ml-4 pl-4 mt-2 font-weight-bold roomc">
+									Room change</p>
+							</button>
+							<div class="text-center"><i
+									class='bx bx-git-pull-request position-absolute mt-4 request'></i></div>
+						
+					</div>
+
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<div class="my-proDetails row pt-5">
+							<div class="col-md-12 img1a">
+								<img src="/img/pro2.jpeg" class="img1 mt-2">
+							</div>
+							<div class="col-md-12 text-center">
+								<b class="dee position-relative">
+									<%= userdata.name %> <br>
+								</b>
+								<div class="profile-details text-center pt-3">
+
+									<span class="de">Year: IV<%= userdata.year %></span> <br>
+									<span class="de"><a><%= userdata.email %></a></span><br>
+									<span class="de"> <%= userdata.specializationid === 1 ? "FullStack" :
+										userdata.specializationid === 2 ? "BlockChain" :
+										userdata.specializationid === 3 ? "FullStack" : "" %> </span> <br>
+																										
+									<button disabled class="butt1"><span>roommate[j]</span></button>
+									<button disabled class="butt2"><span>roommate[j].</span></button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-8 col-md-6 col-sm-12 ">
+						<div class="my-box1  pl-5 pr-5 proo ">
+							<p class="roommate mt-4 font-weight-bold"> Roommate details</p>
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<thead>
+									<tr>
+										<th scope="col">SI.No</th>
+										<th scope="col">Name</th>
+										<th scope="col">Course</th>
+										<th scope="col">Year</th>
+										<th scope="col">Email</th>
+									</tr>
+									</thead>
+			  <% if(roommate) { %>
+									<tbody>
+				<% for(var j = 0; j < roommate.length; j++) { %>
+									<tr>
+										<th scope="row"><%= j+1 %></th>
+										<td><%= roommate[j].student_name %></td>												
+										<td><%= roommate[j].course %></td>
+										<td>IV</td>
+										<td><%= roommate[j].sid %>.gcit@rub.edu.bt</td>
+									</tr>
+									<% } %>
+									</tbody>
+			  <% } %>
+								</table>
+							</div>
+						</div>
+					</div>
+			</main>
+		</main>
+		<% } %>
+		<div class="footer pt-3">
+			<footer>
+				<p class="pt-1 mt-2 pb-2"><i>Copyright©2023 | Hostel Allocation System</i></p>
+			</footer>
+		</div>
+
+	</section>
+
+
+	<script>
+		function setFocus(on) {
+            var element = document.activeElement;
+            if (on) {
+                setTimeout(function () {
+                element.parentNode.classList.add("focus");
+                });
+            } else {
+                let box = document.querySelector(".input-box");
+                box.classList.remove("focus");
+                $("input").each(function () {
+                var $input = $(this);
+                var $parent = $input.closest(".input-box");
+                if ($input.val()) $parent.addClass("focus");
+                else $parent.removeClass("focus");
+                });
+            }
+            }
+	</script>
+	<script>
+		$(document).ready(function() {
+
+		$(".add").click(function() {
+			var id = $(this).attr("data-id");
+			console.log(id);
+    // Show confirmation message using SweetAlert2
+    Swal.fire({
+        html: `
+				<h5 style:>Hostel Change Request</h5>
+								<form enctype="multipart/form-data">
+									<div class="form-group">
+										<div class="input-box active-grey">
+											<label class="input-label">Block Type</label>
+											<select class="input-1" onfocus="setFocus(true)" onblur="setFocus(false)" id="block-type" required  onchange="myFunction()" >
+												<% for(var j = 0; j < block.length; j++) { %>
+													<% 
+													var room = userdata.gender === 'F' ? 'girls' : 'boys';
+													if(block[j].type === room ) { %>
+															<option value="<%= block[j]._id %>"><%= block[j].block_name %></option>
+													<% } %>
+														
+												<% } %>
+											</select>
+										</div>
+
+										<div class="input-box">
+											<label class="input-label">Room</label>
+											<select class="input-1" onfocus="setFocus(true)" onblur="setFocus(false)" required id="room-select">
+											</select>
+										</div>
+
+										<div class="input-box">
+												<label class="input-label">Reason</label>
+												<textarea type="text" class="input-1" onfocus="setFocus(true)" style="height: 150px;" id="reason" onblur="setFocus(false)" required ></textarea>
+										</div>
+
+												<div class="input-box active-grey">
+														<label class="input-label">Attach files</label>
+														<input type="file" name="filename" multiple class="input-1" onfocus="setFocus(true)" style="height: 100px;" id="file" onblur="setFocus(false)" required />
+														
+												</div>
+										</div>
+								</form>
+				`,
+				showCancelButton: true,
+				showConfirmButton: true,
+				confirmButtonColor: "#ff4b13",
+				cancelButtonColor: "#000",
+				confirmButtonText: "Create",
+				preConfirm: () => {
+					// Retrieve the values of the input fields
+					const targetBlock = document.getElementById('block-type').value;
+					const targetRoom = document.getElementById('room-select').value;
+					const reason = document.getElementById('reason').value;
+					const fileName  = document.getElementById('file');
+					const selectedfile = fileName.files[0]
+					const filename = selectedfile.name
+					console.log(filename)
+					// const filename = document.getElementById('file').value;
+					// Return the values as an object
+					return { targetBlock, targetRoom, reason, filename };
+				}
+    }).then((result) => {
+		console.log("confirm result")
+        if (result.isConfirmed) {
+            // Send AJAX request to delete block
+				
+						const { targetBlock, targetRoom, reason, filename } = result.value;
+						//
+						console.log(filename)
+						//
+						console.log("before ajax")
+					
+						fetch(`http://localhost:5000/students/changeroom/${id}`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ targetBlock, targetRoom, reason, filename })
+})
+  .then(response => {
+    if (!response.ok) {
+		console.log("response", response)
+      throw new Error(response);
+    }
+    Toastify({
+      text: 'Successfully send the request!',
+      backgroundColor: 'linear-gradient(to right, #96c93d, #00b09b)',
+      className: 'success',
+      position: 'top-center',
+    }).showToast();
+    window.location.reload();
+  })
+  .catch(error => {
+    console.error(error);
+    Toastify({
+      text: 'You already have request to hostel change',
+      backgroundColor: 'linear-gradient(to right, #ff5f6d, #ffc371)',
+      className: 'error',
+      position: 'top-center',
+    }).showToast();
+  });
+
+						console.log("after ajax")
+
+        }
+    });
+});
+});
+		
+			function myFunction() {
+			const x = document.getElementById("block-type").value;
+			console.log(x);
+      // Send AJAX request to fetch rooms for a block
+      $.ajax({
+        url: `http://localhost:5000/room/api/room/block/${x}`,
+        method: "GET",
+        success: function(response) {
+			console.log(response);
+          // Clear the current options in the room select element
+          $("#room-select").empty();
+          // Add new options to the room select element based on the response
+          for (var i = 0; i < response.length; i++) {
+            $("#room-select").append(`<option value="${response[i]._id}">${response[i].room_name}</option>`);
+          }
+        },
+        error: function(error) {
+			$("#room-select").empty();
+			
+			$("#room-select").append(`<option style="border-color: red;" value=""></option>`);
+        //   If there was an error fetching the rooms, display an error message using Toastify
+          Toastify({
+            text: "Error fetching rooms: " + error.responseText,
+            backgroundColor: "linear-gradient(to right, #ff5f6d, #ffc371)",
+            className: "error",
+            position: "top-center"
+          }).showToast();
+        }
+      });
+    }
+	
+	</script>
+
+	<script>
+		
+		// PROFILE DROPDOWN
+		const profile = document.querySelector("nav .profile");
+		const imgProfile = profile.querySelector(".iconn");
+		const dropdownProfile = profile.querySelector(".profile-link");
+
+		imgProfile.addEventListener("click", function () {
+		dropdownProfile.classList.toggle("show");
+		});
+
+	</script>
+	<script>
+		
+	</script>
+	
+</body>
+
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <!-- Include the ApexCharts library -->
+
+ <link rel="shortcut icon" href="/img/hostel.png" type="image/x-icon">
+	<!-- Bootstrap link -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
+  <!-- Bootstrap link -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+
+
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+		integrity="sha384-HSZ7Ld1Gg5+8oWchX9zv5V5jLQQaQ8VwW5PD5D59pZa0TKOkuL8Jm9zvNSm7gJcu" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.bx.io/boxicons/4.0.0/css/boxicons.min.css">
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+
+    <script src="/js/index.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+
+	<!-- <link rel="stylesheet" type="text/css" href="path/to/helvetica-font-file.ttf"> -->
+
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/search.css">
+	<link rel="stylesheet" href="/css/block.css">
+	<link rel="stylesheet" href="/css/phone_view.css">
+  <link rel="stylesheet" href="/css/swal.css">
+	<link rel="stylesheet" href="/css/index.css">
+  <link rel="stylesheet" href="/css/chart.css">
+  <link rel="stylesheet" href="/css/view_block.css">
+  <link rel="stylesheet" href="/css/alloc.css">
+  <link rel="stylesheet" href="/css/room_alloc.css">
+  <link rel="stylesheet" href="/css/request.css">
+	<title>Hostel Allocation</title>
+</head>
+
+<body>
+  
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+
+		<div class="horizontal-line"></div>
+
+		<ul class="side-menu">
+			<li class="list">
+           <a href="/dashboard/dash" class="nav-link">
+					<i class='bx bx-grid-alt me-5 icon housee'></i>
+					<span class="link">Dashboard</span>
+				</a>
+			</li>
+			<li class="list">
+				<a href="/" onclick="activateLink(this)" class="nav-link">
+					<i class='far fa-building icon building'></i>
+					<span class="link">Block</span>
+				</a>
+			</li>
+			<li class="list">
+				<a href="/room/add-room" onclick="activateLink(this)" class="nav-link">
+					<i class='bx bx-home icon housee'></i>
+					<span class="link">Add room</span>
+				</a>
+			</li>
+			<li class="list">
+				<a href="/year/all-allocations" onclick="activateLink(this)" class="nav-link">
+					<i class='bx bx-calendar icon housee'></i>
+					<span class="link">Academic Year</span>
+				</a>
+			</li>
+			<li class="list">
+				<a href="/room/search" onclick="activateLink(this)" class="nav-link">
+					<i class="material-icons icon sea">search</i>
+					<span class="link">Search</span>
+				</a>
+			</li>
+			<li class="list">
+				<a href="/request" onclick="activateLink(this)" class="nav-link">
+					<i class='bx bx-message-square-dots icon housee'></i>
+					<span class="link"> Request</span>
+				</a>
+			</li>
+			<li class="list ab">
+				<a href="#" onclick="activateLink(this)" class="nav-link">
+					<i class='fas fa-wheelchair icon housee'></i>
+					<span class="link">Disability</span>
+				</a>
+				<ul class="dropdown">
+					<li><a href="#" onclick="activateLink(this)" class="male">Male</a></li>
+					<li><a href="#" onclick="activateLink(this)" class="female">Female</a></li>
+				</ul>
+			</li>
+
+		</ul>
+
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- NAVBAR -->
+	<section id="content">
+		<!-- NAVBAR -->
+
+		<nav>
+
+			<div class="small">
+				<div class="logo">
+					<a href="#" class="brand" style="position:absolute;"><img src="/img/hostel.png" id="nav_logo"
+							alt=""></a>
+				</div>
+
+
+				<div>
+					<i class='bx bx-menu toggle-sidebar box_menu'>
+						<div class="btnn">
+						</div>
+					</i>
+				</div>
+
+			</div>
+
+			<form action="#" class="bar-search">
+
+				<div class="content">
+					<div class="search">
+						<input type="text" class="search__input" arial-label="search"
+							placeholder="Search student by name">
+						<button class="search__submit" arial-label="submit search"><i class="fas fa-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+			<div class="profile">
+				<div class="pro">
+					<img src="/img/rannas.png" class="pro-pic" alt="">
+					<i class='bx bx-cog iconn'></i>
+				</div>
+				<ul class="profile-link">
+					<li><a href="#"><i class='bx bxs-user-circle icon profile-drop'></i>
+							Profile</a></li>
+					<li><a href="#"><i class='bx bxs-cog profile-drop'></i> Settings</a></li>
+					<li><a href="#"><i class='bx bxs-log-out-circle profile-drop'></i> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+
+
+
+		<script>
+		function activateLink(link) {
+ // remove the active class from all links
+ const links = document.querySelectorAll('.nav-link');
+ links.forEach(link => {
+	 link.classList.remove('block-back');
+ });
+
+ // add the active class to the clicked link
+ link.classList.add('block-back');
+}
+		</script>
+		<!-- NAVBAR -->
+
+    <script>
+    // SIDEBAR DROPDOWN
+const allDropdown = document.querySelectorAll("#sidebar .side-dropdown");
+const sidebar = document.getElementById("sidebar");
+
+allDropdown.forEach((item) => {
+  const a = item.parentElement.querySelector("a:first-child");
+  a.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    if (!this.classList.contains("active")) {
+      allDropdown.forEach((i) => {
+        const aLink = i.parentElement.querySelector("a:first-child");
+
+        aLink.classList.remove("active");
+        i.classList.remove("show");
+      });
+    }
+
+    this.classList.toggle("active");
+    item.classList.toggle("show");
+  });
+});
+
+// SIDEBAR COLLAPSE
+const toggleSidebar = document.querySelector("nav .toggle-sidebar");
+const allSideDivider = document.querySelectorAll("#sidebar .divider");
+
+if (sidebar.classList.contains("hide")) {
+  allSideDivider.forEach((item) => {
+    item.textContent = "-";
+  });
+  allDropdown.forEach((item) => {
+    const a = item.parentElement.querySelector("a:first-child");
+    a.classList.remove("active");
+    item.classList.remove("show");
+  });
+} else {
+  allSideDivider.forEach((item) => {
+    item.textContent = item.dataset.text;
+  });
+}
+
+toggleSidebar.addEventListener("click", function () {
+  sidebar.classList.toggle("hide");
+
+  if (sidebar.classList.contains("hide")) {
+    allSideDivider.forEach((item) => {
+      item.textContent = "-";
+    });
+
+    allDropdown.forEach((item) => {
+      const a = item.parentElement.querySelector("a:first-child");
+      a.classList.remove("active");
+      item.classList.remove("show");
+    });
+  } else {
+    allSideDivider.forEach((item) => {
+      item.textContent = item.dataset.text;
+    });
+  }
+});
+
+sidebar.addEventListener("mouseleave", function () {
+  if (this.classList.contains("hide")) {
+    allDropdown.forEach((item) => {
+      const a = item.parentElement.querySelector("a:first-child");
+      a.classList.remove("active");
+      item.classList.remove("show");
+    });
+    allSideDivider.forEach((item) => {
+      item.textContent = "-";
+    });
+  }
+});
+
+sidebar.addEventListener("mouseenter", function () {
+  if (this.classList.contains("hide")) {
+    allDropdown.forEach((item) => {
+      const a = item.parentElement.querySelector("a:first-child");
+      a.classList.remove("active");
+      item.classList.remove("show");
+    });
+    allSideDivider.forEach((item) => {
+      item.textContent = item.dataset.text;
+    });
+  }
+});
+
+// PROFILE DROPDOWN
+const profile = document.querySelector("nav .profile");
+const imgProfile = profile.querySelector(".iconn");
+const dropdownProfile = profile.querySelector(".profile-link");
+
+imgProfile.addEventListener("click", function () {
+  dropdownProfile.classList.toggle("show");
+});
+
+// MENU
+const allMenu = document.querySelectorAll("main .content-data .head .menu");
+
+allMenu.forEach((item) => {
+  const icon = item.querySelector(".icon");
+  const menuLink = item.querySelector(".menu-link");
+
+  icon.addEventListener("click", function () {
+    menuLink.classList.toggle("show");
+  });
+});
+
+window.addEventListener("click", function (e) {
+  if (e.target !== imgProfile) {
+    if (e.target !== dropdownProfile) {
+      if (dropdownProfile.classList.contains("show")) {
+        dropdownProfile.classList.remove("show");
+      }
+    }
+  }
+
+  allMenu.forEach((item) => {
+    const icon = item.querySelector(".icon");
+    const menuLink = item.querySelector(".menu-link");
+
+    if (e.target !== icon) {
+      if (e.target !== menuLink) {
+        if (menuLink.classList.contains("show")) {
+          menuLink.classList.remove("show");
+        }
+      }
+    }
+  });
+});
+// USER DETAILS.HTML
+// for the students management tab(dropdowns)
+const dropdowns = document.querySelectorAll(".dropdown");
+
+dropdowns.forEach((dropdown) => {
+  const select = dropdown.querySelector(".select");
+  const caret = dropdown.querySelector(".caret");
+  const menu = dropdown.querySelector(".menu");
+  const options = dropdown.querySelectorAll(".menu li");
+  const selected = dropdown.querySelector(".selected");
+
+  select.addEventListener("click", () => {
+    select.classList.toggle("select-clicked");
+    caret.classList.toggle("caret-rotate");
+    menu.classList.toggle("menu-open");
+  });
+
+  options.forEach((option) => {
+    option.addEventListener("click", () => {
+      selected.innerText = option.innerText;
+      select.classList.remove("select-clicked");
+      caret.classList.remove("caret-rotate");
+      menu.classList.remove("menu-open");
+      options.forEach((option) => {
+        option.classList.remove("active");
+      });
+
+      option.classList.add("active");
+    });
+  });
+});
+
+// For Table Search
+const search = document.querySelector(".input-group input"),
+  table_rows = document.querySelectorAll("tbody tr"),
+  table_headings = document.querySelectorAll("thead th");
+
+// 1. Searching for specific data of HTML table
+search.addEventListener("input", searchTable);
+
+function searchTable() {
+  table_rows.forEach((row, i) => {
+    let table_data = row.textContent.toLowerCase(),
+      search_data = search.value.toLowerCase();
+
+    row.classList.toggle("hide", table_data.indexOf(search_data) < 0);
+    row.style.setProperty("--delay", i / 25 + "s");
+  });
+
+  document.querySelectorAll("tbody tr:not(.hide)").forEach((visible_row, i) => {
+    visible_row.style.backgroundColor =
+      i % 2 == 0 ? "transparent" : "#0000000b";
+  });
+}
+
+// 2. Sorting | Ordering data of HTML table
+
+table_headings.forEach((head, i) => {
+  let sort_asc = true;
+  head.onclick = () => {
+    table_headings.forEach((head) => head.classList.remove("active"));
+    head.classList.add("active");
+
+    document
+      .querySelectorAll("td")
+      .forEach((td) => td.classList.remove("active"));
+    table_rows.forEach((row) => {
+      row.querySelectorAll("td")[i].classList.add("active");
+    });
+
+    head.classList.toggle("asc", sort_asc);
+    sort_asc = head.classList.contains("asc") ? false : true;
+
+    sortTable(i, sort_asc);
+  };
+});
+
+function sortTable(column, sort_asc) {
+  [...table_rows]
+    .sort((a, b) => {
+      let first_row = a
+          .querySelectorAll("td")
+          [column].textContent.toLowerCase(),
+        second_row = b.querySelectorAll("td")[column].textContent.toLowerCase();
+
+      return sort_asc
+        ? first_row < second_row
+          ? 1
+          : -1
+        : first_row < second_row
+        ? -1
+        : 1;
+    })
+    .map((sorted_row) =>
+      document.querySelector("tbody").appendChild(sorted_row)
+    );
+}
+
+// Edit User dettails popp up
+function EditStdDetails() {
+  var blur = document.getElementById("blur");
+  blur.classList.toggle("active");
+  var popup = document.getElementById("popup");
+  popup.classList.toggle("active");
+}
+</script>
+
+<script>
+
+
+
+</script>

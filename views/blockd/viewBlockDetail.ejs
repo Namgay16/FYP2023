@@ -1,0 +1,185 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>View</h3>
+    <p><%= block.block_name %></p>
+
+    <% for(var i = 0; i < rooms.length; i++) { %>
+        <% if (rooms[i].blockid === block._id) { %>	 
+            <p><%= rooms[i].room_name %></p>
+        <% } %>
+        
+    <% } %>
+
+</body>
+</html> -->
+
+<%- include('../required/header') %>
+
+<% if(allocate) { %>
+<section id="stat">
+    <div class="col">
+        <div class="col-lg-12 col-md-12 col-sm-12 hea">
+            <div class="box">
+                <div class="di">
+                    <h5 class="fon font-weight-bold nt"><%= block.block_name %></h5>
+                    <h6 class="fon roo sttt">Block</h6>
+                </div>
+                <div class="ico di">
+                    <i class='far fa-building bulid'></i>
+                </div>
+            </div>
+            <div class="box">
+                <div class="di">
+                    <h5 class="fon font-weight-bold nt"><%= block.rooms.length %></h5>
+                    <h6 class="fon roo stt">Rooms</h6>
+                </div>
+                <div class="ico di">
+                    <i class='bx bx-home bx-tada-hover bui'></i>
+                </div>
+            </div>
+            <div class="box">
+                <div class="di">
+                    <h5 class="fon font-weight-bold nt">45</h5>
+                    <h6 class="fon roo st">Students</h6>
+                </div>
+                <div class="ico di">
+                    <i class="far  fa-user fa-outline builds"></i>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="container col-lg-12 col-md-12 col-sm-12 taa ">
+            <br>
+            <h5 class="room-d text-left">Room details</h5>
+            <div class="container col-lg-12 col-md-12 col-sm-12 taaa ">
+              <table class="styled-table">
+                <thead>
+                  <tr>
+                    <th>SINo.</th>
+                    <th>Rname</th>
+                    <th>Capacity</th>
+                    <th>Name</th>
+                    <th>SID</th>
+                    <th>Course</th>
+                    <th>Year</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(var i = 0; i < rooms.length; i++) { %>
+                    <% if (rooms[i].blockid === block._id) { %>	
+                      <% console.log("inside") %>
+                      <% var studentsInRoom = allocate.filter(a => a.roomid === rooms[i]._id); %>
+                      <% console.log("fghjkl", studentsInRoom) %>
+                      <% if (studentsInRoom.length > 0) { %>
+                        
+                        <tr>
+                          <td><%= i %></td>
+                          <td><%= rooms[i].room_name %></td>
+                          <td><%= rooms[i].room_capacity %></td>
+                          <td class="mw-100">
+                            <% studentsInRoom.forEach(function(student, index) { %>
+                              <%= student.student_name %>
+                              <% if (index < studentsInRoom.length - 1) { %>
+                                <br>
+                              <% } %>
+                            <% }); %>
+                          </td>
+                          <td>
+                            <% studentsInRoom.forEach(function(student, index) { %>
+                              <%= student.sid %>
+                              <% if (index < studentsInRoom.length - 1) { %>
+                                <br>
+                              <% } %>
+                            <% }); %>
+                          </td>
+                          <td>
+                            <% studentsInRoom.forEach(function(student, index) { %>
+                              <%= student.course %>
+                              <% if (index < studentsInRoom.length - 1) { %>
+                                <br>
+                              <% } %>
+                            <% }); %>
+                          </td>
+                          <td>
+                            <% studentsInRoom.forEach(function(student, index) { %>
+                              <%= student.year %>
+                              <% if (index < studentsInRoom.length - 1) { %>
+                                <br>
+                              <% } %>
+                            <% }); %>
+                          </td>
+                          <td>
+                            <i class="bx bx-edit bx-flashing-hover room-ico"></i>
+                            <i class="bx bx-trash bx-flashing-hover room-ico"></i>
+                          </td>
+                        </tr>
+                      <% } else { %>
+                    
+                     
+                         
+                      <tr>
+                        <td><%= i %></td>
+                        <td><%= rooms[i].room_name %></td>
+                        <td class="mw-100">
+                        
+                        </td>
+                        <td>
+                          <p>No students in the room</p>
+                        </td>
+                        <td>
+                        
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+                          
+                        </td>
+                        <td>
+                          <i class="bx bx-edit bx-flashing-hover room-ico"></i>
+                          <i class="bx bx-trash bx-flashing-hover room-ico"></i>
+                        </td>
+                      </tr>
+                      <% } %>
+                    <% } %>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+            <br><br>
+        </div>
+
+
+    </div>
+
+
+
+
+
+</section>
+<% } else { %>
+<p>no allocation found</p>
+<% } %>
+
+
+
+<!-- NAVBAR -->
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="script.js"></script>
+
+</body>
+
+</html>
+<!-- bx-tada-hover -->
+

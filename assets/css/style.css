@@ -1,0 +1,431 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+
+* {
+  font-family: "Helvetica", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --grey: #f1f0f6;
+  --dark-grey: #8d8d8d;
+  --light: #fff;
+  --dark: #000;
+  --green: #81d43a;
+  --light-green: #e3ffcb;
+  --orange: #ff7f18;
+  --light-blue: #d0e4ff;
+  --dark-blue: #0c5fcd;
+  --red: #fc3b56;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--grey);
+  overflow-x: none;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1.6;
+  color: #ff4b13;
+  background: #f1f0f6;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+/* SIDEBAR */
+#sidebar {
+  position: fixed;
+  max-width: 250px;
+  width: 100%;
+  background: var(--light);
+  top: 6.42rem;
+  left: 0;
+  height: 90%;
+  overflow-y: auto;
+  scrollbar-width: none;
+  transition: all 0.3s ease;
+  z-index: 200;
+  box-shadow: 3px 0 5px #cfcfcf;
+}
+
+.sidebar-content .list {
+  list-style: none;
+}
+.list .nav-link {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  padding: 14px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.list .nav-link:hover {
+  background-color: #ff4a131e;
+}
+.nav-link .icon {
+  margin-right: 26px;
+  margin-left: 8px;
+  color: #ff4b13;
+  opacity: 90%;
+}
+.nav-link .link {
+  font-size: 16px;
+  color: #767676;
+}
+.list .nav-link:hover .icon,
+.list .nav-link:hover .link {
+  color: #ff4b13;
+  opacity: 90%;
+}
+
+.horizontal-line {
+  border: none;
+  border-top: 2px solid #ff4b13;
+  width: 73%;
+  align-items: center;
+  margin-left: 13%;
+  margin-top: 1px;
+  opacity: 90%;
+}
+#sidebar.hide {
+  max-width: 93px;
+}
+.building {
+  padding-left: 0.2rem;
+  padding-right: 4px;
+  font-size: 22px;
+}
+/* search icon side navigation */
+.sea {
+  font-size: 26px;
+  padding-right: 1px;
+}
+/* add room,allocate, request, wheelchair icon side navigation */
+.housee {
+  font-size: 24px;
+  padding-right: 2.5px;
+}
+/* search icon side navigation */
+#sidebar.hide:hover {
+  max-width: 260px;
+}
+#sidebar::-webkit-scrollbar {
+  display: none;
+}
+#sidebar .brand {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+  font-weight: 700;
+  color: var(--orange);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: var(--light);
+  transition: all 0.3s ease;
+  padding: 0 6px;
+}
+
+#sidebar .icon-right {
+  margin-left: auto;
+  transition: all 0.3s ease;
+}
+#sidebar .side-menu {
+  margin: 22px 0;
+  padding: 0 31px;
+  transition: all 0.3s ease;
+}
+
+#sidebar .side-menu a {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #4f4f4f;
+  letter-spacing: 0.05em;
+  font-weight: 100;
+  padding: 12px 16px 12px 0;
+  transition: all 0.3s ease;
+  border-radius: 15px 0 15px 0;
+  margin: 4px 0;
+  font-weight: 200;
+  white-space: nowrap;
+}
+/* CSS code to hide the dropdown content by default */
+#sidebar .dropdown {
+  display: none;
+}
+
+/* CSS code to show the dropdown content on hover */
+#sidebar .ab:hover .dropdown {
+  display: block;
+  margin-left: 34%;
+  top: -0.1rem;
+  line-height: 10px;
+}
+
+#sidebar .male:hover {
+  color: #ff4b13;
+  text-decoration: none;
+  opacity: 90%;
+  margin-left: 5px;
+}
+#sidebar .female:hover {
+  color: #ff4b13;
+  top: -10px;
+  text-decoration: none;
+  opacity: 90%;
+  margin-left: 5px;
+}
+/* SIDEBAR */
+
+/* CONTENT */
+#content {
+  position: relative;
+  width: calc(100% - 245px);
+  /* content responsive on side navigation open */
+  left: 6.8rem;
+  padding-right: 18px;
+  transition: all 0.3s ease;
+}
+
+#sidebar.hide + #content {
+  width: calc(100% - 85px); /* sidebar responsive (side distance on content */
+  left: 1.9rem;
+}
+/* NAVBAR */
+.box_menu {
+  margin-left: 10.4rem;
+  margin-top: 43px;
+  color: #ff4b13;
+  opacity: 90%;
+}
+nav {
+  width: 100%;
+  background: var(--light);
+  height: 102px;
+  padding: 0 20px;
+  display: fixed;
+  justify-content: space-between;
+  align-items: center;
+  grid-gap: 28px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0px 3px 10px #cfcfcf;
+}
+
+#nav_logo {
+  width: 48px;
+  margin-left: 0.8rem;
+  margin-top: 35px;
+}
+nav form {
+  max-width: 300px;
+  margin-left: 17.2rem;
+  margin-top: -2.3rem;
+}
+nav .form-group {
+  position: relative;
+}
+nav .ra {
+  cursor: pointer;
+}
+nav .form-group input {
+  width: 100%;
+  height: 49px;
+  border: 1px solid rgb(196, 196, 196);
+  border-radius: 10px;
+  padding: 10px 36px 10px 16px;
+  transition: all 1s ease;
+}
+nav .form-group input:focus {
+  outline: none;
+  border-color: #ff4b13;
+  opacity: 90%;
+}
+nav .form-group .icon {
+  position: absolute;
+  top: 1.5rem;
+  transform: translateY(-50%);
+  right: 15px;
+  color: #ff4b13;
+  opacity: 90%;
+}
+.btn {
+  background-color: #ff4b13;
+  width: 35px;
+  height: 35px;
+  color: none;
+  border-radius: 10px;
+  position: sticky;
+  margin-left: 86%;
+  margin-top: -43px;
+  opacity: 10%;
+}
+.btnn {
+  background-color: #ff4b13;
+  width: 35px;
+  height: 35px;
+  color: none;
+  border-radius: 10px;
+  position: absolute;
+  margin-left: -0.4rem;
+  margin-top: -1.8rem;
+  opacity: 10%;
+}
+nav .toggle-sidebar {
+  font-size: 22px;
+  cursor: pointer;
+}
+nav .pro {
+  border: 2px solid #ff4b13;
+  border-radius: 20px;
+  margin-left: -5rem;
+  width: 60px;
+  height: 30px;
+  margin-top: -2.4rem;
+  opacity: 90%;
+}
+nav .iconn {
+  position: absolute;
+  margin: 0.2rem 0 0 2rem;
+  color: #ff4b13;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 90%;
+}
+nav .profile {
+  position: block;
+  float: right;
+  margin-top: -0.9rem;
+}
+nav .profile img {
+  float: right;
+  width: 24px;
+  height: 24px;
+  margin-top: 0.1rem;
+  margin-right: 1.9rem;
+  padding-left: -10px;
+  border-radius: 100%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1.5px solid #ff4b13;
+  opacity: 90%;
+}
+nav .profile .profile-link {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: var(--light);
+  padding: 10px 0;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 160px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+nav .profile .profile-link.show {
+  opacity: 1;
+  pointer-events: visible;
+  top: 100%;
+}
+nav .profile .profile-link a {
+  padding: 10px 16px;
+  display: flex;
+  grid-gap: 10px;
+  font-size: 14px;
+  color: #ff4b13;
+  align-items: center;
+  transition: all 0.3s ease;
+  opacity: 90%;
+}
+nav .profile .profile-link a:hover {
+  background: #ff4a131e;
+}
+#sidebar.hide + .greetings {
+  padding-top: -4rem;
+}
+/* greetings div */
+#block .add-block {
+  width: 101.8%;
+  height: 70px;
+}
+#block .add-block {
+  margin-top: 32px;
+  height: 70px;
+}
+#block .block-title {
+  font-size: 24px;
+  margin-left: 1.5rem;
+  padding-top: 0.9rem;
+  font-weight: bold;
+  opacity: 90%;
+}
+#block .add-block-text {
+  font-size: 20px;
+  padding-top: 01.1rem;
+  opacity: 90%;
+}
+
+#block .add {
+  background-color: #ff4b13;
+  opacity: 90%;
+  color: #fff;
+}
+
+#sidebar .block-back {
+  color:#ff4b13;
+  background-color: #ff4a131e;
+  opacity:90%;
+}
+#sidebar .block-back .link {
+  color:#ff4b13;
+}
+
+@media (max-width: 732px) {
+  .btn {
+    margin-left: 84%;
+  }
+
+  nav form {
+    width: 39%;
+    margin-left: 11rem;
+  }
+
+  .box-menu {
+    margin-left: 6rem;
+  }
+  .search {
+    margin-left: 0.5rem;
+  }
+  .search:focus-within {
+    width: 95%;
+  }
+}
+
+@media (max-width: 1159px) {
+  #block .student-details {
+    margin-left: 48%;
+  }
+}
+@media (max-width: 990px) {
+  #block .student-details {
+    margin-left: 55%;
+  }
+}
